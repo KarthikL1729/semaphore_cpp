@@ -32,7 +32,10 @@ class Semaphore {
         }
         --count;
     }
-    int get_count() const { return count; }
+    int get_count() {
+        unique_lock lock(mtx);
+        return count; 
+    }
 };
 
 #endif //MY_SEMAPHORE_H
